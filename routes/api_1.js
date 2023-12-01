@@ -23,10 +23,27 @@ router.route('/')
     //     age: req.body.age,
     //     married: req.body.married,
     //   });
-    console.log("req.body:", req.body);
+      console.log("req.body:", req.body);
       const user = {api_1_post_a:req.a, api_1_post_b:req.b}
       console.log(user);
       res.status(201).json(user);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+
+  router.get('/:option', async (req, res, next) => {
+    try {
+    //   const comments = await Comment.findAll({
+    //     include: {
+    //       model: User,
+    //       where: { id: req.params.id },
+    //     },
+    //   });
+    
+      console.log(req.params.option);
+      res.json(req.params.option+"_get");
     } catch (err) {
       console.error(err);
       next(err);
