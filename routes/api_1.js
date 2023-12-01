@@ -5,7 +5,7 @@ const router = express.Router();
 console.log("여기");
 
 router.route('/')
-  .get(async (req, res, next) => {
+  .get( (req, res, next) => { //.get(async (req, res, next) => {
     try {
       // const users = await User.findAll();
       const users = {api_1_a:1, api_1_b:2}
@@ -15,7 +15,7 @@ router.route('/')
       next(err);
     }
   })
-  .post(async (req, res, next) => {
+  .post( (req, res, next) => {  // .post(async (req, res, next) => {
     try {
         
     //   const user = await User.create({
