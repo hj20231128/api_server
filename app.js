@@ -31,11 +31,11 @@ app.set('port', process.env.PORT || 3000);
 // app.use('/users', usersRouter);
 // app.use('/comments', commentsRouter);
 
-// app.use('/api_1', api_1_Router);
-// app.use('/api_2', api_2_Router);
+app.use('/api_1', api_1_Router);
+app.use('/api_2', api_2_Router);
 
 app.get('/', (req,res)=>{
-  res.send("왜 api서버를 rest api가 아닌, 웹브라우저로 들어오나요 --? 내가 널 그렇게 가르쳤니ㅠㅜ?");
+  res.send("왜 web-server/was가 아닌, api서버를 rest api가 아닌, 웹브라우저로 들어오나요 --? 내가 널 그렇게 가르쳤니ㅠㅜ?");
 })
 
 app.listen(app.get('port'), () => {
