@@ -23,7 +23,7 @@ router.route('/')
     //     age: req.body.age,
     //     married: req.body.married,
     //   });
-      const user = {api_1_post_a:req.body.a+1, api_1_post_b:req.body.b+1}
+      const user = {api_1_post_a:req.body.a, api_1_post_b:req.body.b}
       console.log(user);
       res.status(201).json(user);
     } catch (err) {
