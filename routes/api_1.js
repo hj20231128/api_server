@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
+console.log("여기");
+
 router.route('/')
   .get(async (req, res, next) => {
     try {
