@@ -30,4 +30,54 @@ router.route('/')
     }
   });
 
+  router.get('/:option', async (req, res, next) => {
+    try {
+    //   const comments = await Comment.findAll({
+    //     include: {
+    //       model: User,
+    //       where: { id: req.params.id },
+    //     },
+    //   });
+    
+      console.log(req.params.option);
+      res.json(req.params.option+"_get");
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+  router.patch('/:option', async (req, res, next) => {
+    try {
+    //   const result = await Comment.update({
+    //     comment: req.body.comment,
+    //   }, {
+    //     where: { id: req.params.id },
+    //   });
+
+        console.log("req.params.option", req.params.option);
+        const result = {"res":"ok"};
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+  router.delete('/:option', async (req, res, next) => {
+    try {
+    //   const result = await Comment.update({
+    //     comment: req.body.comment,
+    //   }, {
+    //     where: { id: req.params.id },
+    //   });
+
+        console.log("req.params.option", req.params.option);
+        const result = {"res":"ok"};
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+
+
   module.exports = router;
