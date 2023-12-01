@@ -23,6 +23,7 @@ router.route('/')
     //     age: req.body.age,
     //     married: req.body.married,
     //   });
+    console.log("req.body:", req.body);
       const user = {api_1_post_a:req.a, api_1_post_b:req.b}
       console.log(user);
       res.status(201).json(user);
