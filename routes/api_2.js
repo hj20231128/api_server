@@ -46,7 +46,7 @@ router.route('/')
       next(err);
     }
   });
-  router.patch('/:option', async (req, res, next) => {
+  router.put('/:option', async (req, res, next) => {
     try {
     //   const result = await Comment.update({
     //     comment: req.body.comment,
@@ -55,7 +55,8 @@ router.route('/')
     //   });
 
         console.log("req.params.option", req.params.option);
-        const result = {"res":"ok"};
+        console.log("req.body", req.body);
+        const result = {"res":"put ok"};
       res.json(result);
     } catch (err) {
       console.error(err);
@@ -71,7 +72,7 @@ router.route('/')
     //   });
 
         console.log("req.params.option", req.params.option);
-        const result = {"res":"ok"};
+        const result = {"res":"delete ok"};
       res.json(result);
     } catch (err) {
       console.error(err);
