@@ -8,7 +8,7 @@ router.route('/')
   .get( (req, res, next) => { //.get(async (req, res, next) => {
     try {
       // const users = await User.findAll();
-      const users = {api_1_a:1, api_1_b:2}
+      const users = {api_1_get_a:1, api_1_get_b:2}
       res.json(users);
     } catch (err) {
       console.error(err);
@@ -23,7 +23,7 @@ router.route('/')
     //     age: req.body.age,
     //     married: req.body.married,
     //   });
-      const user = {api_1_c:req.body.e+1, api_1_d:req.body.f+1}
+      const user = {api_1_post_a:req.body.a+1, api_1_post_b:req.body.b+1}
       console.log(user);
       res.status(201).json(user);
     } catch (err) {

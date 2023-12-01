@@ -6,7 +6,7 @@ router.route('/')
   .get(async (req, res, next) => {
     try {
       // const users = await User.findAll();
-      const users = {api_2_a:10, api_2_b:20}
+      const users = {api_2_get_a:10, api_2_get_b:20}
       res.json(users);
     } catch (err) {
       console.error(err);
@@ -21,7 +21,7 @@ router.route('/')
     //     age: req.body.age,
     //     married: req.body.married,
     //   });
-      const user = {api_2_c:req.body.e+10, api_2_d:req.body.f+10}
+      const user = {api_2_post_a:req.body.a+10, api_2_post_b:req.body.b+10}
       console.log(user);
       res.status(201).json(user);
     } catch (err) {
