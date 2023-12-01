@@ -47,14 +47,12 @@ router.route('/')
     }
   });
   router.put('/:option', async (req, res, next) => {
-    console.log("여기 1");
     try {
     //   const result = await Comment.update({
     //     comment: req.body.comment,
     //   }, {
     //     where: { id: req.params.id },
     //   });
-    console.log("여기 2");
         console.log("req.params.option", req.params.option);
         console.log("req.body", req.body);
         const result = {"res":"put ok"};
