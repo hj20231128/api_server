@@ -7,6 +7,7 @@ router.route('/')
     try {
       const db_content = {api_1_get_a:1, api_1_get_b:2}
       res.json(db_content);
+      console.log(db_content);
     } catch (err) {
       console.error(err);
       next(err);
@@ -18,6 +19,7 @@ router.route('/')
       const db_content = {api_1_post_a:req.body.a+"_post", api_1_post_b:req.body.b+"_post"}
       //console.log("여기", req.body.a, req.body.b, db_content);
       res.status(201).json(db_content);
+      console.log(db_content);
     } catch (err) {
       console.error(err);
       next(err);
