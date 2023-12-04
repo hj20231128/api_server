@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 // };
 
 let corsOptions2 = {
-  origin: 'http://localhost:8080',  // Replace with the origin of your React app
+  origin: ["*", 'http://localhost:8080'],  // Replace with the origin of your React app
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,  // If you are using cookies or other credentials
 }
