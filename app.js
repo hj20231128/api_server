@@ -15,17 +15,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// let corsOptions = {
-//   origin: "*", // 출처 허용 옵션 'http://localhost:8080'
-//   credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
-// };
+let corsOptions = {
+  origin: "*", // 출처 허용 옵션 'http://localhost:8080'
+  credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+};
 
 let corsOptions2 = {
   origin: ["*", 'http://localhost:8080'],  // Replace with the origin of your React app
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,  // If you are using cookies or other credentials
 }
-app.use(cors(corsOptions2));
+app.use(cors(corsOptions));
 
 sequelize.sync({ force: false })
   .then(() => {
