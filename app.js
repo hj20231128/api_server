@@ -10,6 +10,11 @@ const api_2_Router = require('./routes/api_2');
 const app = express();
 app.set('port', process.env.PORT || 3000);
 
+// Set the referrer policy
+app.use((req, res, next) => {
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
