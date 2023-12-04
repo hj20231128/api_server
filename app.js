@@ -25,7 +25,7 @@ let corsOptions2 = {
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,  // If you are using cookies or other credentials
 }
-app.use(cors(corsOptions));
+app.use(cors(corsOptions2));
 
 sequelize.sync({ force: false })
   .then(() => {
