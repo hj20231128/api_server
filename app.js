@@ -1,35 +1,35 @@
 const express = require('express');
-const path = require('path');
-// const nunjucks = require('nunjucks');
 
-// const { sequelize } = require('./models');
-// const indexRouter = require('./routes');
+const cors = require('cors'); // import cors from 'cors';
+const path = require('path');
+
+const { sequelize } = require('./models');
 const api_1_Router = require('./routes/api_1');
 const api_2_Router = require('./routes/api_2');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
 
-// app.set('view engine', 'html');
-// nunjucks.configure('views', {
-//   express: app,
-//   watch: true,
-// });
-// sequelize.sync({ force: false })
-//   .then(() => {
-//     console.log('데이터베이스 연결 성공');
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-// app.use('/comments', commentsRouter);
+let corsOptions = {
+  origin: "*", // 출처 허용 옵션 'http://localhost:8080'
+  credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+};
+app.use(cors(corsOptions));
+
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log('[[ DB connected! ]]');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+
 
 app.use('/api_1', api_1_Router);
 app.use('/api_2', api_2_Router);
@@ -39,5 +39,5 @@ app.get('/', (req,res)=>{
 })
 
 app.listen(app.get('port'), () => {
-  console.log(app.get('port'), '번 포트에서 대기 중');
+  console.log('\n\n[[ api server가 ', app.get('port'), '번 포트에서 대기 중 ]]\n\n');
 });

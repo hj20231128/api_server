@@ -1,29 +1,26 @@
 const express = require('express');
+const { Testdb } = require('../models');
 
 const router = express.Router();
 
 router.route('/')
   .get(async (req, res, next) => {
     try {
-      // const users = await User.findAll();
-      const users = {api_2_get_a:10, api_2_get_b:20}
-      res.json(users);
+      const db_content = await Testdb.findAll();  
+      res.json(db_content);
     } catch (err) {
       console.error(err);
       next(err);
     }
   })
   .post(async (req, res, next) => {
+    console.log('req.body.a', req.body.a)
     try {
-        
-    //   const user = await User.create({
-    //     name: req.body.name,
-    //     age: req.body.age,
-    //     married: req.body.married,
-    //   });
-      const user = {api_2_post_a:req.body.a+10, api_2_post_b:req.body.b+10}
-      console.log(user);
-      res.status(201).json(user);
+      const db_content = await Testdb.create({
+        col1: req.body.a,
+        col2: req.body.b,
+      });
+      res.status(201).json(db_content);
     } catch (err) {
       console.error(err);
       next(err);
@@ -32,15 +29,11 @@ router.route('/')
 
   router.get('/:option', async (req, res, next) => {
     try {
-    //   const comments = await Comment.findAll({
-    //     include: {
-    //       model: User,
-    //       where: { id: req.params.id },
-    //     },
-    //   });
-    
-      console.log(req.params.option);
-      res.json(req.params.option+"_get");
+      const db_content = await Testdb.findAll({
+          attributes:["id", "col1", "col2"],
+          where: { col1: req.params.option },
+      });
+      res.json(db_content);
     } catch (err) {
       console.error(err);
       next(err);
@@ -48,14 +41,11 @@ router.route('/')
   });
   router.put('/:option', async (req, res, next) => {
     try {
-    //   const result = await Comment.update({
-    //     comment: req.body.comment,
-    //   }, {
-    //     where: { id: req.params.id },
-    //   });
-        console.log("req.params.option", req.params.option);
-        console.log("req.body", req.body);
-        const result = {"res":"put ok"};
+      const result = await Testdb.update({
+        col2: req.body.newval,
+      }, {
+        where: { col1: req.params.option },
+      });
       res.json(result);
     } catch (err) {
       console.error(err);
@@ -64,14 +54,9 @@ router.route('/')
   });
   router.delete('/:option', async (req, res, next) => {
     try {
-    //   const result = await Comment.update({
-    //     comment: req.body.comment,
-    //   }, {
-    //     where: { id: req.params.id },
-    //   });
-
-        console.log("req.params.option", req.params.option);
-        const result = {"res":"delete ok"};
+      const result = await Testdb.destroy({
+        where: { col1: req.params.option },
+      });
       res.json(result);
     } catch (err) {
       console.error(err);
