@@ -1,6 +1,14 @@
 const express = require('express');
 const { Testdb } = require('../models');
 const router = express.Router();
+const cors = require('cors'); // import cors from 'cors';
+
+let corsOptions2 = {
+  origin: 'http://localhost:8080',  // Replace with the origin of your React app
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,  // If you are using cookies or other credentials
+}
+app.use(cors(corsOptions2));
 
 router.route('/')
   .get(async (req, res, next) => {
