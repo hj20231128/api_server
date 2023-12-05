@@ -1,0 +1,56 @@
+# GET http://3.27.174.62:3000/api_1
+
+# GET http://localhost:3000/api_1
+
+# GET http://3.27.174.62:3000/api_2
+
+# POST http://localhost:3000/api_2 HTTP/1.1
+# Content-Type: application/json; charset=UTF-8
+
+# {
+#   "a": "서울시",
+#   "b": "70"
+# }
+
+# POST http://3.27.174.62:3000/api_1 HTTP/1.1
+# Content-Type: application/json; charset=UTF-8
+
+# {
+#   "a": "100",
+#   "b": "200"
+# }
+
+# POST http://3.27.174.62:3000/api_2
+# Content-Type: application/json; charset=UTF-8
+
+# {
+#   "a": "1000",
+#   "b": "2000"
+# }
+
+
+# PUT http://3.27.174.62:3000/api_2/100
+# Content-Type: application/json; charset=UTF-8
+
+# {
+#   "a": "10000",
+#   "b": "20000"
+# }
+
+# PUT http://localhost:3000/api_2/100
+# Content-Type: application/json; charset=UTF-8
+
+# {
+#   "newval": "200000"
+# }
+# DELETE http://3.27.174.62:3000/api_2/111
+
+# DELETE http://localhost:3000/api_2/101
+
+# PUT http://localhost:3000/api_2/111
+# Content-Type: application/json; charset=UTF-8
+
+# {
+#   "a": "10000",
+#   "b": "20000"
+# }

@@ -6,6 +6,7 @@ const path = require('path');
 const { sequelize } = require('./models');
 const api_1_Router = require('./routes/api_1');
 const api_2_Router = require('./routes/api_2');
+const api_3_Router = require('./routes/api_3');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
@@ -16,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -44,6 +45,11 @@ sequelize.sync({ force: false })
 
 app.use('/api_1', api_1_Router);
 app.use('/api_2', api_2_Router);
+app.use('/api_3', api_3_Router);
+
+//app.use('/images', express.static('image_group1')); // image_group1 이라는 서버의 폴더를 감춤
+//app.use('/images', express.static(__dirname + '/image_group1'));          // 위와 같음
+app.use('/images', express.static(path.join(__dirname, 'image_group1')));   // 위와 같음
 
 app.get('/', (req,res)=>{
   res.send("왜 web-server/was가 아닌, api서버를 rest api가 아닌, 웹브라우저로 들어오나요 --? 내가 널 그렇게 가르쳤니ㅠㅜ? 아 혹시 관리자 모드 페이지 생각하고? 그럼 ㅇㅈ");
